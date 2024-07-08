@@ -1,0 +1,30 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.jsx",
+  "scripts": {
+    "start": "node --inspect index.jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/das-110722/nodejs_blog.git"
+  },
+  "keywords": [
+    "f8",
+    "nodejs"
+  ],
+  "author": "das110722",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/das-110722/nodejs_blog/issues"
+  },
+  "homepage": "https://github.com/das-110722/nodejs_blog#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
