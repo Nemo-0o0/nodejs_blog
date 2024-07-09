@@ -6,6 +6,9 @@ const app = express()
 const port = 1203
 
 
+app.use(express.static(path.join(__dirname, 'public')));
+console.log('Serving static files from:', path.join(__dirname, 'public'));
+
 // HTTP Logger
 app.use(morgan('combined'))
 

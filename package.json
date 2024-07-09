@@ -4,6 +4,7 @@
   "main": "src/index.jsx",
   "scripts": {
     "start": "node --inspect src/index.jsx",
+    "watch": "npx sass --embed-source-map --watch src/resources/scss/app.scss:src/public/css/app.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "morgan": "^1.10.0",
+    "node-sass": "^9.0.0",
     "nodemon": "^3.1.4"
   }
 }
