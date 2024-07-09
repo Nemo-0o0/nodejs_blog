@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 console.log('Serving static files from:', path.join(__dirname, 'public'));
 
 // HTTP Logger
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 
 // Template Engine
 app.engine('hbs', handlebars.engine({
@@ -26,6 +26,11 @@ app.get('/', (req, res) => {
 })
 app.get('/news', (req, res) => {
   res.render('news');
+})
+
+app.get('/search', (req, res) => {
+  console.log('Query Parameters:', req.query.q); 
+  res.render('search');
 })
 
 app.listen(port, () => {
