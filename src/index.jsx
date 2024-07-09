@@ -19,10 +19,11 @@ app.engine('hbs', handlebars.engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
+
+// routing
 app.get('/', (req, res) => {
   res.render('home');
 })
-
 app.get('/news', (req, res) => {
   res.render('news');
 })
