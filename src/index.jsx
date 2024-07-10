@@ -3,7 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const handlebars = require('express-handlebars')
 const app = express()
-const port = 1203
+const port = 3001
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,11 +25,11 @@ app.get('/', (req, res) => {
   res.render('home');
 })
 app.get('/news', (req, res) => {
+  console.log(req.query.q)
   res.render('news');
 })
 
 app.get('/search', (req, res) => {
-  console.log('Query Parameters:', req.query.q); 
   res.render('search');
 })
 
