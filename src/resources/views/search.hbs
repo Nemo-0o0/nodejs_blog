@@ -1,17 +1,18 @@
-<div class="mt-4">
-    <form method="POST">
-        <div class="mb-3 mt-3">
-            <label class="pb-4" for="search-input">Search key...</label> 
-            <input type="text" name="q" class="form-control" id="email" placeholder="nhap tu khoa...">
+<div class='mt-4'>
+    <form method='GET'>
+        <!-- Changed method to GET -->
+        <div class='mb-3 mt-3'>
+            <label class='pb-4' for='search-input'>Search key...</label>
+            <input type='text' name='q' class='form-control' id='search-input' placeholder='nhap tu khoa...' />
         </div>
-        <div class="mb-3 mt-3">
-            <label class="pb-4" for="gender-input">Sex</label> 
-            <select name="gender" class="form-control" id="gender-input">
-                <option value="">-- Chon gioi tinh --</option>
-                <option value="male">Nam</option>
-                <option value="female">Nu</option>
-            </select>    
+        <div class='mb-3 mt-3'>
+            <label class='pb-4' for='gender-input'>Sex</label>
+            <select name='gender' class='form-control' id='gender-input'>
+                <option value=''>-- Chon gioi tinh --</option>
+                <option value='male'>Nam</option>
+                <option value='female'>Nu</option>
+            </select>
         </div>
-        <button type="submit" class="btn btn-primary">SEARCH...</button>
+        <button type='submit' class='btn btn-primary'>SEARCH...</button>
     </form>
 </div>

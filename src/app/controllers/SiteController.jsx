@@ -1,13 +1,21 @@
-// Classes constructor
+const Course = require('../models/Course.jsx');
+
 class SiteController {
     // [GET] /home
-    home(req, res) {
-        res.render('home');
+    async home(req, res) {
+        try {
+            const courses = await Course.find({});
+            res.json(courses);
+        } catch (error) {
+            res.status(400).json({ error: 'Message' });
+        }
+
+        // res.render('home');
     }
 
-    /// [GET]  /search
+    // [GET] /search
     search(req, res) {
-        res.send('search');
+        res.render('search');
     }
 }
 

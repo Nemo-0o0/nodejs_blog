@@ -2,11 +2,17 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
-const app = express();
-const port = 3001;
 
 const route = require('./routes/index.jsx');
+const db = require('./config/db/index.jsx');
 
+// Connect to database
+db.connect();
+
+const app = express();
+const port = 1203;
+
+// Use static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
