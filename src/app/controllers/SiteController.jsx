@@ -5,11 +5,11 @@ class SiteController {
     async home(req, res) {
         try {
             const courses = await Course.find({});
+            // res.render('home');
             res.json(courses);
         } catch (error) {
             res.status(400).json({ error: 'Message' });
         }
-
         // res.render('home');
     }
 
