@@ -5,10 +5,23 @@ class MeController {
     // [GET] /me/stored/courses
     storedCourses(req, res, next) {
         Course.find({})
-            .then((courses) =>
+            .then(courses =>
                 res.render('me/stored-courses', {
                     courses: mutipleMongooseToObject(courses),
-                }),
+                })
+            )
+            .catch(next);
+    }
+
+    // [GET] /me/trash/courses
+
+    trashCourses(req, res, next) {
+        Course.findWithDeleted({ deleted: true })
+            .then(courses =>
+                res.render('me/trash-courses', {
+                    title: 'Khoa hoc da xoa',
+                    courses: mutipleMongooseToObject(courses),
+                })
             )
             .catch(next);
     }
