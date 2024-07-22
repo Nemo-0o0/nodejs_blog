@@ -48,17 +48,39 @@ class CourseController {
             .catch(next);
     }
     // DELETE /courses/:id/force
-    forceDestroy(req, res, next) {
-        Course.deleteOne({ _id: req.params.id })
-            .then(() => res.redirect('back'))
-            .catch(next);
+    async forceDestroy(req, res, next) {
+        try {
+            await Course.deleteOne({ _id: req.params.id });
+            res.redirect('back');
+        } catch (error) {
+            next(error);
+        }
     }
 
     // PATCH / courses/:id/restore
-    restore(req, res, next) {
-        Course.restore({ _id: req.params.id })
-            .then(() => res.redirect('back'))
-            .catch(next);
+    async restore(req, res, next) {
+        try {
+            await Course.restore({ _id: req.params.id });
+            res.redirect('back');
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    // POST / courses/handle-form-actions
+    async handleFormActions(req, res, next) {
+        try {
+            switch (req.body.action) {
+                case 'delete':
+                    await Course.delete({ _id: { $in: req.body.courseIds } });
+                    res.redirect('back');
+                    break;
+                default:
+                    res.json({ message: 'Action invalid' });
+            }
+        } catch (error) {
+            next(error);
+        }
     }
 }
 
