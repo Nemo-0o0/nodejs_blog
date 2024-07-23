@@ -11,7 +11,7 @@ const db = require('./config/db/index.jsx');
 db.connect();
 
 const app = express();
-const port = 3002;
+const port = 3009;
 
 // Use static folder
 app.use(express.static(path.join(__dirname, 'public')));
