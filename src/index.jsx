@@ -25,6 +25,26 @@ app.use(express.json());
 
 app.use(methodOverride('_method'));
 
+
+// Middleware
+app.get('/middleware',
+    function  (req, res ,next) {
+        if (['vethuong', 'vevip'].includes(req.query.ve)) {
+            req.face = 'Gach gach gach'
+            return next()
+        }
+        res.status(403).json({
+            message: 'Acces denied'
+        })
+    },
+     function(req, res, next) {
+        res.json({
+            message: 'Successfully',
+            face: req.face
+        })
+    }
+)
+
 // XMLHttpRequest,  fetch , axios,...
 
 // HTTP Logger
