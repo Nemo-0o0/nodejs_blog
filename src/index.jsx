@@ -25,10 +25,11 @@ app.use(express.json());
 
 app.use(methodOverride('_method'));
 
+app.use(bacbaove)
+
 
 // Middleware
-app.get('/middleware',
-    function  (req, res ,next) {
+    function bacbaove (req, res ,next) {
         if (['vethuong', 'vevip'].includes(req.query.ve)) {
             req.face = 'Gach gach gach'
             return next()
@@ -36,14 +37,8 @@ app.get('/middleware',
         res.status(403).json({
             message: 'Acces denied'
         })
-    },
-     function(req, res, next) {
-        res.json({
-            message: 'Successfully',
-            face: req.face
-        })
     }
-)
+
 
 // XMLHttpRequest,  fetch , axios,...
 
