@@ -15,3 +15,6 @@
 4. Chỉnh sửa / thay đổi
 
 ### Ứng dụng
+ -Dựng chức năng xác thực (Authentication)
+- Dựng chức năng phân quyền (Authorization)
+-Để chia sẻ các giá trị của biến tới tất cả các views (BE)
