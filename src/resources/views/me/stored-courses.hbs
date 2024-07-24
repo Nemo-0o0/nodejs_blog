@@ -26,13 +26,24 @@
         </div>
     </div>
 
+    {{!-- {{_sort.type}} --}}
+
     <table class="table mt-4">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Tên khóa học</th>
-                <th>Trình độ</th>
-                <th colspan="1">Thời gian tạo</th>
+                <th colspan="2">
+                    Tên khóa học
+                    {{{sortable 'name' _sort}}}
+                </th>
+                <th>
+                    Trình độ
+                    {{{sortable 'level' _sort}}}
+                </th>
+                <th colspan="2">
+                    Thời gian tạo
+                    {{{sortable 'createdAt' _sort}}}
+                </th>
             </tr>
         </thead>
         <tbody>

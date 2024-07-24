@@ -4,8 +4,11 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const handlebars = require('express-handlebars');
 
+const SortMiddleware = require('./app/middlewares/SortMiddleware.js')
+
 const route = require('./routes/index.jsx');
 const db = require('./config/db/index.jsx');
+const { accessSync } = require('fs');
 
 // Connect to database
 db.connect();
@@ -25,19 +28,24 @@ app.use(express.json());
 
 app.use(methodOverride('_method'));
 
-app.use(bacbaove)
+// Custom middleware
+app.use(SortMiddleware)
 
 
+
+// app.use(bacbaove)
 // Middleware
-    function bacbaove (req, res ,next) {
-        if (['vethuong', 'vevip'].includes(req.query.ve)) {
-            req.face = 'Gach gach gach'
-            return next()
-        }
-        res.status(403).json({
-            message: 'Acces denied'
-        })
-    }
+    // function bacbaove (req, res ,next) {
+    //     if (['vethuong', 'vevip'].includes(req.query.ve)) {
+    //         req.face = 'Gach gach gach'
+    //         return next()
+    //     }
+    //     res.status(403).json({
+    //         message: 'Acces denied'
+    //     })
+    // }
+
+
 
 
 // XMLHttpRequest,  fetch , axios,...
@@ -52,6 +60,27 @@ app.engine(
         extname: '.hbs',
         helpers: {
             sum: (a, b) => a + b,
+            sortable: (field, sort) => {
+                const sortType = field === sort.column ? sort.type : 'default'
+ 
+                const icons = {
+                    default: 'fa-solid fa-up-down',
+                    asc: 'fa-solid fa-arrow-down-short-wide',
+                    desc: 'fa-solid fa-arrow-down-wide-short',
+                }
+                const types = {
+                    default: 'desc',
+                    asc:'desc',
+                    desc:'asc',
+                }
+
+                const icon = icons[sortType]
+                const type = types[sortType]
+
+                return `<a href="?_sort&column=${field}&type=${type}">
+                                    <i class="${icon}"></i>
+                                </a>`
+            },
         },
     })
 );
