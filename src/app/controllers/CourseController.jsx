@@ -14,13 +14,20 @@ class CourseController {
         res.render('courses/create');
     }
     //POST / COURSES/ store
-    store(req, res, next) {
-        req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
-        const course = new Course(req.body)
-        course
-            .save()
-            .then(() => res.redirect('/me/stored/courses'))
-            .catch(error => next(error));
+    async store(req, res, next) {
+        try {
+            req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+
+            const latestCourse = await Course.findOne({}) .sort({ _id: -1 })              
+            // res.json(latestCourse)    
+                req.body._id = latestCourse ? latestCourse._id + 1 : 1;      
+                const course = new Course(req.body);
+                await course.save();
+                res.redirect('/me/stored/courses')
+    
+        } catch (error) {
+            next(error);
+        }
     }
 
     // GET courses/ :id/edit
